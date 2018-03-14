@@ -1,0 +1,33 @@
+<div class ="container color-dark">
+  <div class="col">
+    <p> Add a bucket list item</p>
+  </div>
+  <!-- Interpolation below from homecomponent.ts -->
+  <div class="col">
+    <p> Your bucket list ({{ itemCount }}) </p>
+  </div>
+</div>
+<div class ="container color-light" [@goals]="goals.length">
+  <div class="col">
+    <p class="sm">use this form below to add items to your bucket list gaol and what you would like to do with your life </p>
+
+    <!-- <form>
+      Twoway binding used below.. 
+      <input type="text" class="txt" name="item" placeholder="Life goal..." [(ngModel)]="goalText">
+      <br><span>{{ goalText }} </span>
+      <input type="submit" class="btn" [value]=" btnText ">
+    </form> -->
+
+    <form>
+        <input type="text" class="txt" name="item" placeholder="Life goal..." [(ngModel)]="goalText">
+        <input type="submit" class="btn" [value]=" btnText" (click)="addItem()">
+      </form>
+  </div>
+
+  <!-- *ngFor="let goal of goals" and {{ goal }} renders input on the screen -->
+  <div class="col">
+    <p class="life-container" *ngFor="let goal of goals; let i = index" (click)="removeItem(i)">
+       {{ goal }}
+    </p>
+  </div>
+</div>
